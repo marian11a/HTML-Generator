@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            background-color: lightgrey;
+        }
+
+        #sidebar {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        #text-div {
+            width: 80%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        textarea {
+            width: 97%;
+            padding-right: 5px;
+            height: 80vh;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto; /* Enable vertical scroll if needed */
+            max-height: 70vh; /* Limit the height to 50% of viewport height */
+        }
+
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        li:nth-child(odd) {
+            background-color: #d3d3d3;
+        }
+
+        li:nth-child(even) {
+            background-color: #4e4e4ee6;
+            color: white;
+        }
+
+        #generateButton {
+            width: 98%;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4e4e4ee6;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #generateButton:hover {
+            background-color: #3d39397a;
+        }
+    </style>
+</head>
+<body>
+<div id="sidebar">
+    <h3 style="text-align: center;">HTML Files</h3>
+    <ul id="fileList">
+        <!-- The file list will be populated dynamically -->
+    </ul>
+</div>
+<div id="text-div">
+    <textarea id="textInput" placeholder="Enter your prompt here..."></textarea>
+    <button id="generateButton" onclick="generateHTML()">Generate</button>
+</div>
+
+<script src="load-and-generate.js"></script>
+<script src="open-html-file.js"></script>
+</body>
+</html>
