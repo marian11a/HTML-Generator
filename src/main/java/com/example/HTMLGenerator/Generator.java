@@ -14,7 +14,7 @@ public class Generator {
     static String API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2";
 
     //Go to https://huggingface.co/settings/tokens and get your API token!
-    static String API_TOKEN = "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";
+    static String API_TOKEN = "API_TOKEN";
 
     public String generate(String prompt) {
         try {
