@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 public class Controller {
@@ -37,8 +39,9 @@ public class Controller {
         try {
             int count = getCount();
             String generatedText = new Generator().generate(prompt);
+            String title = extractTitle(generatedText);
 
-            String filePath = "src/main/resources/generated/(" + count + ").html";
+            String filePath = "src/main/resources/generated/(" + count + ")-" + title + ".html";
             FileWriter writer = new FileWriter(filePath);
 
             writer.write(generatedText);
@@ -96,5 +99,17 @@ public class Controller {
             }
         }
         return 0;
+    }
+
+    private String extractTitle(String htmlContent) {
+        String regex = "<title>(.*?)</title>";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(htmlContent);
+        if (matcher.find()) {
+            String title = matcher.group(1);
+            return title.replaceAll("\\s+", "-").toLowerCase();
+        } else {
+            return "untitled";
+        }
     }
 }
